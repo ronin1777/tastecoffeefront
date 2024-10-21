@@ -1,0 +1,36 @@
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #1a1a1a; /* Dark background as in your image */
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+
+}
+
+.nav-item {
+  text-align: center;
+  color: #c2c2c2; /* Default icon color */
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.nav-item span {
+  display: block;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.nav-item.active {
+  color: #4285F4; /* Blue color for the active icon */
+}
+
+.nav-item.active svg {
+  font-size: 24px; /* Enlarged icon when active */
+}
+
+.nav-item svg {
+  transition: font-size 0.2s ease-in-out, color 0.2s ease-in-out;
+}
