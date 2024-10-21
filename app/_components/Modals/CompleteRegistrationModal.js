@@ -26,16 +26,13 @@ export default function CompleteRegistrationModal({ handleCloseModal }) {
         email,
       });
 
-      const response = await fetch(
-        "https://tastecoffeefront.vercel.app/api/auth/set-cookies",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ access, refresh }),
-        }
-      );
+      const response = await fetch("api/auth/set-cookies", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ access, refresh }),
+      });
       if (response.ok) {
         setSuccess("تکمیل ثبت نام موفقیت آمیز بود.");
         await connectCart(access);
