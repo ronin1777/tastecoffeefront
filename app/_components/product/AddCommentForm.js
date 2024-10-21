@@ -2,7 +2,6 @@
 import apiUrl from "@/services/config";
 import React, { useState } from "react"; // افزودن useState
 import { useForm } from "react-hook-form";
-import apiUrl from "@/services/config";
 
 export default function AddCommentForm({ productId, accessToken }) {
   const [successMessage, setSuccessMessage] = useState(""); // متغیر برای پیام موفقیت
