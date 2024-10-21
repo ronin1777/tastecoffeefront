@@ -22,11 +22,17 @@ export default function ProductComments({ productId }) {
   // Load user data
   useEffect(() => {
     const fetchUser = async () => {
+      // بررسی وجود توکن قبل از ارسال درخواست
+      if (!accessToken) {
+        console.log("User is not logged in, no access token found.");
+        return;
+      }
+
       try {
         const userData = await fetchUserData(accessToken);
         setUser(userData);
       } catch (err) {
-        console.error("Error fetching user data:", err.message);
+        console.error("Error fetching user data2:", err.message);
       }
     };
 

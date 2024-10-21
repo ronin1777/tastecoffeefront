@@ -1,26 +1,26 @@
-
+import apiUrl from "@/services/config";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const fetchUserData = async (accessToken) => {
-    const response = await fetch(`http://localhost:8000/api/user/user-profile/`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${accessToken}`,
-        },
-    });
+  const response = await fetch(`${apiUrl}/api/user/user-profile/`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
 
-    if (!response.ok) {
-        const errorMessage = response.status === 401 ? 'Unauthorized' : response.statusText;
-        throw new Error(errorMessage);
-    }
+  if (!response.ok) {
+    const errorMessage =
+      response.status === 401 ? "Unauthorized" : response.statusText;
+    throw new Error(errorMessage);
+  }
 
-    return await response.json();
+  return await response.json();
 };
 
 export const updateUserProfile = async (data, accessToken) => {
-
   const formDataToSend = new FormData();
 
   Object.keys(data).forEach((key) => {
@@ -32,7 +32,7 @@ export const updateUserProfile = async (data, accessToken) => {
   });
 
   try {
-    const response = await fetch("http://localhost:8000/api/user/user-update/", {
+    const response = await fetch(`${apiUrl}/api/user/user-update/`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -42,7 +42,9 @@ export const updateUserProfile = async (data, accessToken) => {
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.detail || "خطا در بروزرسانی، لطفا دوباره امتحان کنید.");
+      throw new Error(
+        errorData.detail || "خطا در بروزرسانی، لطفا دوباره امتحان کنید."
+      );
     }
 
     return await response.json();
@@ -52,22 +54,20 @@ export const updateUserProfile = async (data, accessToken) => {
 };
 
 export async function fetchUserProfile(accessToken) {
-  const response = await fetch('http://localhost:8000/api/user/user-profile/', {
-    method: 'GET',
+  const response = await fetch(`${apiUrl}/api/user/user-profile/`, {
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
     },
-  })
+  });
 
   if (response.ok) {
-    return await response.json()
+    return await response.json();
   } else if (response.status === 401) {
     // اگر اکسس توکن منقضی شده باشد، 401 برمی‌گرداند
-    throw new Error('Access token expired')
+    throw new Error("Access token expired");
   } else {
-    throw new Error('Failed to fetch user profile')
+    throw new Error("Failed to fetch user profile");
   }
 }
-
-
