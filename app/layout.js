@@ -1,7 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
 
-import { ThemeProvider } from "next-themes";
 import { cookies } from "next/headers";
 import BottomNav from "@/app/_components/navbars/BottomNav";
 import { fetchUserData } from "@/services/user/userProfile";
@@ -54,10 +53,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body className={`bg-gray-100 dark:bg-zinc-800 ${Vazir.className}`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <main>{children}</main>
-          <BottomNav user={user} />
-        </ThemeProvider>
+        <main>{children}</main>
       </body>
     </html>
   );
