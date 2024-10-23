@@ -56,7 +56,7 @@ export default async function ShopPage({ searchParams }) {
               {products.length ? (
                 <ListShop products={products} />
               ) : (
-                "محصولی پیدا نشد"
+                <p className="text-red-500">محصولی پیدا نشد</p>
               )}
             </div>
             <PaginationComponent

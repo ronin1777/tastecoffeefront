@@ -81,7 +81,7 @@ export default async function BlogPage() {
                   </div>
                 ))
               ) : (
-                <p>هیچ پستی وجود ندارد.</p>
+                <p className="text-red-500">هیچ پستی وجود ندارد.</p>
               )}
             </div>
           </div>
