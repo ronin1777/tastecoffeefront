@@ -6,6 +6,7 @@ const nextConfig = {
       "127.0.0.1",
       "tastecoffee.liara.run",
       "tastecoffee.darkube.app",
+      "storage.iran.liara.space",
     ],
   },
 };
