@@ -16,15 +16,14 @@ export default async function BlogPage() {
     },
   });
 
-  // Check if the response is OK
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    const errorDetails = await res.text();
+    throw new Error(
+      `Failed to fetch data: ${res.status} ${res.statusText} - ${errorDetails}`
+    );
   }
 
-  // Parse the JSON data
   const data = await res.json();
-  console.log(`image: ${data.results.images}`);
-  console.log(`data: ${JSON.stringify(data.results)}`);
 
   return (
     <>

@@ -28,7 +28,7 @@ import { Suspense } from "react";
 import HomeProductList from "./HomeProductList";
 import NewProductsLoading from "@/app/_components/Loadings/NewProducts";
 
-export default function HomeProductS() {
+export default function HomeProductS({ products }) {
   return (
     <section className="products-section pt-8 md:pt-20 lg:pt-36 bg-no-repeat">
       <div className="container mt-5">
@@ -49,10 +49,10 @@ export default function HomeProductS() {
             مشاهده همه
           </a>
         </div>
-        {/* 
-                <Suspense fallback={<NewProductsLoading/>}>
-                    <HomeProductList products={products}/>
-                </Suspense> */}
+
+        <Suspense fallback={<NewProductsLoading />}>
+          <HomeProductList products={products} />
+        </Suspense>
       </div>
     </section>
   );

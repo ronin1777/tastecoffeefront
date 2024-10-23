@@ -9,17 +9,17 @@ import HomeBanner from "@/app/_components/HomeContent/HomeBanner";
 import { fetchProducts } from "@/services/product/fetchProducts";
 
 export default async function Home() {
-  // const { results: products } = await fetchProducts();
+  const { results: products } = await fetchProducts();
   return (
     <>
-      {/* <HomeBanner /> */}
-      <HomeProductS />
-      {/* <CategoryBanner /> */}
+      <HomeBanner />
+      <HomeProductS products={products} />
+      <CategoryBanner />
       <HomeAbout />
-      {/* <HomeCategoryP /> */}
-      {/* <ShippingSection /> */}
+      <HomeCategoryP />
+      <ShippingSection />
       {/* <HomePopularP products={products} /> */}
-      {/* <HomeBlog /> */}
+      <HomeBlog />
     </>
   );
 }
