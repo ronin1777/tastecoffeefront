@@ -8,11 +8,11 @@ export const updateCartQuantity = async (
 ) => {
   try {
     // تعیین URL بر اساس وضعیت ورود کاربر
-    const apiUrl = accessToken
+    const apiUrls = accessToken
       ? `${apiUrl}/api/orders/update-cart/${productId}/` // کاربر وارد شده
       : `${apiUrl}/api/orders/update-cart/${cartId}/${productId}/`; // کاربر مهمان
 
-    const response = await fetch(apiUrl, {
+    const response = await fetch(apiUrls, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
