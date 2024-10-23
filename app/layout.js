@@ -2,8 +2,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import { cookies } from "next/headers";
-import BottomNav from "@/app/_components/navbars/BottomNav";
 import { fetchUserData } from "@/services/user/userProfile";
+import { Providers } from "./utils/providers";
 
 const Vazir = localFont({
   src: "./fonts/Vazir-WOL.woff",
@@ -51,9 +51,11 @@ export default async function RootLayout({ children }) {
   }
 
   return (
-    <html lang="fa" dir="rtl">
+    <html lang="fa" dir="rtl" suppressHydrationWarning>
       <body className={`bg-gray-100 dark:bg-zinc-800 ${Vazir.className}`}>
-        <main>{children}</main>
+        <Providers>
+          <main>{children}</main>
+        </Providers>
       </body>
     </html>
   );
