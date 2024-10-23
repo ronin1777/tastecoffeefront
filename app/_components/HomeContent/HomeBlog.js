@@ -29,7 +29,7 @@ export default function HomeBlog() {
           // Only take the three most recent blog posts
           setBlogs(data.results.slice(0, 3));
         } else {
-          console.error("Failed to fetch blog data");
+          console.error("Error fetching blog data1:", error);
         }
       } catch (error) {
         console.error("Error fetching blog data:", error);

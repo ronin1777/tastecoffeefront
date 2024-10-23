@@ -4,23 +4,22 @@ import CategoryBanner from "@/app/_components/HomeContent/CategoryBanner";
 import HomeAbout from "@/app/_components/HomeContent/HomeAbout";
 
 import ShippingSection from "@/app/_components/SendProducts";
-import HomePopularP from "@/app/_components/HomeContent/HomePopularP";
 import HomeBlog from "@/app/_components/HomeContent/HomeBlog";
 import HomeBanner from "@/app/_components/HomeContent/HomeBanner";
 import { fetchProducts } from "@/services/product/fetchProducts";
 
 export default async function Home() {
-  const { results: products } = await fetchProducts();
+  // const { results: products } = await fetchProducts();
   return (
     <>
-      <HomeBanner />
-      <HomeProductS products={products} />
-      <CategoryBanner />
+      {/* <HomeBanner /> */}
+      <HomeProductS />
+      {/* <CategoryBanner /> */}
       <HomeAbout />
-      <HomeCategoryP />
-      <ShippingSection />
+      {/* <HomeCategoryP /> */}
+      {/* <ShippingSection /> */}
       {/* <HomePopularP products={products} /> */}
-      <HomeBlog />
+      {/* <HomeBlog /> */}
     </>
   );
 }
