@@ -1,5 +1,4 @@
 import apiUrl from "@/services/config";
-import { apiBaseUrl } from "next-auth/client/_utils";
 
 export async function fetchCartData(cartId, accessToken) {
   let apiUrls = `${apiUrl}/api/orders/cart/`;
@@ -9,13 +8,11 @@ export async function fetchCartData(cartId, accessToken) {
   };
 
   if (accessToken) {
-    // درخواست برای کاربر احراز هویت شده با استفاده از توکن
     headers["Authorization"] = `Bearer ${accessToken}`;
   } else if (cartId) {
-    // اضافه کردن cartId به عنوان پارامتر query برای کاربر مهمان
     apiUrl += `?cart_id=${cartId}`;
   } else {
-    return null; // اگر نه توکن و نه cartId وجود داشته باشد
+    return null;
   }
 
   try {
