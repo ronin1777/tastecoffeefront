@@ -2,7 +2,7 @@ import apiUrl from "@/services/config";
 import { apiBaseUrl } from "next-auth/client/_utils";
 
 export async function fetchCartData(cartId, accessToken) {
-  let apiUrl = `${apiBaseUrl}/api/orders/cart/`;
+  let apiUrls = `${apiUrl}/api/orders/cart/`;
   let headers = {
     "Content-Type": "application/json",
     next: { revalidate: 10 },
@@ -19,7 +19,7 @@ export async function fetchCartData(cartId, accessToken) {
   }
 
   try {
-    const response = await fetch(apiUrl, { headers });
+    const response = await fetch(apiUrls, { headers });
     if (response.ok) {
       return await response.json();
     } else {
