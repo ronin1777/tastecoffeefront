@@ -10,7 +10,7 @@ export async function fetchCartData(cartId, accessToken) {
   if (accessToken) {
     headers["Authorization"] = `Bearer ${accessToken}`;
   } else if (cartId) {
-    apiUrl += `?cart_id=${cartId}`;
+    apiUrls += `?cart_id=${cartId}`;
   } else {
     return null;
   }
