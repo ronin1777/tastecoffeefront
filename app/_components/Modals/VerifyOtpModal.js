@@ -80,6 +80,7 @@ export default function VerifyOtpModal({ phone, handleCloseModal }) {
       );
     }
   };
+  console.log(`otp: ${otp}`);
 
   return (
     <motion.div
