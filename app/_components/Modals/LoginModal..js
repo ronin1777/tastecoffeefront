@@ -43,11 +43,12 @@ export default function LoginModal({ handleCloseModal }) {
 
     try {
       const response = await sendOtpAction(phone);
-      setSuccess("OTP ارسال شد.");
+
+      console.log(`orp: ${JSON.stringify(response)}`);
+      const data = setSuccess("OTP ارسال شد.");
       setIsOtpSent(true);
     } catch (error) {
       setError(error.message);
-      console.log();
     }
   };
 
