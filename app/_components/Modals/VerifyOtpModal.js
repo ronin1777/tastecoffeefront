@@ -56,7 +56,7 @@ export default function VerifyOtpModal({ phone, handleCloseModal }) {
           setSuccess("ورود موفقیت‌آمیز بود.");
           await connectCart(access);
           handleCloseModal();
-          router.refresh();
+          location.reload();
         } else {
           setError("خطا در ذخیره توکن‌ها.");
         }
