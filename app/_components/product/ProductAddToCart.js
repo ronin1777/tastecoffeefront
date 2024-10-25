@@ -55,7 +55,7 @@ const AddToCart = ({ productId, available }) => {
       }
 
       // Set a success message
-      setSuccessMessage("Product added to cart successfully!");
+      setSuccessMessage("محصول با موفقیت اضافه شد");
       location.reload();
     } catch (error) {
       setErrorMessage(error.message);
