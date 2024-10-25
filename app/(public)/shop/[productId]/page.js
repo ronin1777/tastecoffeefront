@@ -100,38 +100,44 @@ export default async function ProductPage({ params }) {
               <div className="products-head">
                 <div className="products-title--box">
                   <div className="products-title">
-                    <h1 className="flex flex-col gap-2">
-                      <span> قهوه {product?.name}</span>
+                    <h1 className="flex flex-col gap-2 text-zinc-700 dark:text-white">
+                      قهوه {product?.name}
                     </h1>
                   </div>
                 </div>
               </div>
 
               <ul className="grid lg:grid-cols-2  md::grid-cols-1 gap-4 child:p-5 child:text-sm child:dark:bg-zinc-700 dark:child:text-white child:bg-zinc-200 child:rounded-xl pt-4">
-                <li className="products-attribute-single">
+                <li className="products-attribute-single flex gap-x-7">
                   <span className="attribute-name-single">گونه :</span>
                   <span className="attribute-value-single">
                     {product?.variety}
                   </span>
                 </li>
-                <li className="products-attribute-single">
+                <li className="products-attribute-single flex gap-x-7">
                   <span className="attribute-name-single">طعم‌یادها :</span>
                   <span className="attribute-value-single">
                     {product?.flavor_notes}
                   </span>
                 </li>
-                <li className="products-attribute-single">
+                <li className="products-attribute-single flex gap-x-7">
                   <span className="attribute-name-single">خاستگاه :</span>
                   <span className="attribute-value-single">
                     {product?.origin}
                   </span>
                 </li>
-                <li className="products-attribute-single">
+                <li className="products-attribute-single flex gap-x-7">
                   <span className="attribute-name-single">
                     مواد تشکیل‌دهنده :
                   </span>
                   <span className="attribute-value-single">
                     {type === "bean" ? "دانه" : "پودر"} قهوه
+                  </span>
+                </li>
+                <li className="products-attribute-single flex gap-x-7">
+                  <span className="attribute-name-single">موجودی:</span>
+                  <span className="attribute-value-single">
+                    {product.stock}
                   </span>
                 </li>
               </ul>
