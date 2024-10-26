@@ -6,7 +6,13 @@ import apiUrl from "@/services/config";
 const BlogPostDetail = async ({ params }) => {
   const { id } = params;
 
-  const res = await fetch(`${apiUrl}/api/blog/blog/${id}/`);
+  const res = await fetch(`${apiUrl}/api/blog/blog/${id}/`, {
+    method: "GET",
+    next: { revalidate: 1 },
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch blog post");

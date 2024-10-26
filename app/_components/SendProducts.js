@@ -144,7 +144,7 @@ export default function ShippingSection() {
                     />
                   </div>
                   {/* Line connecting circles */}
-                  <div className="absolute ml-1 top-8 left-1/2 transform -translate-x-1/2 w-0.5 h-16 bg-black"></div>
+                  <div className="absolute ml-1 top-8 left-1/2 transform -translate-x-1/2 w-0.5 h-20 bg-black"></div>
                 </div>
                 <div className="ml-4">
                   <h5 className="text-xl text-zinc-700 dark:text-white font-semibold">
@@ -168,7 +168,7 @@ export default function ShippingSection() {
                     />
                   </div>
                   {/* Line connecting circles */}
-                  <div className="absolute ml-1 top-8 left-1/2 transform -translate-x-1/2 w-0.5 h-16 bg-black"></div>
+                  <div className="absolute ml-1 top-8 left-1/2 transform -translate-x-1/2 w-0.5 h-20 bg-black"></div>
                 </div>
                 <div className="ml-4">
                   <h5 className="text-xl text-zinc-700 dark:text-white font-semibold">

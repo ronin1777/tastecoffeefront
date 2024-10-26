@@ -68,7 +68,10 @@ export const completeRegistrationAction = async (data) => {
     const responseData = await response.json();
 
     if (!response.ok) {
-      const error = new Error(responseData.error || "خطا در تکمیل ثبت‌نام.");
+      const errorMessages = responseData.email
+        ? responseData.email[0]
+        : "خطا در تکمیل ثبت‌نام.";
+      const error = new Error(errorMessages);
       error.status = response.status;
       throw error;
     }
