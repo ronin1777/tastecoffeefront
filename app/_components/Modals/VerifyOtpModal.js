@@ -43,7 +43,7 @@ export default function VerifyOtpModal({ phone, handleCloseModal }) {
         setIsVerify(true);
       } else if (status === 200 && access && refresh) {
         // ارسال توکن‌ها به API Route برای ذخیره در کوکی‌ها
-        const response = await fetch("api/auth/set-cookies", {
+        const response = await fetch("/api/auth/set-cookies", {
           method: "POST",
           credentials: "include",
           headers: {
