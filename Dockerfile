@@ -1,5 +1,5 @@
 # Stage 1: Build
-FROM node:20 AS builder
+FROM hub.hamdocker.ir/node:20 as builder
 WORKDIR /app
 
 # Copy package files
@@ -13,7 +13,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Run
-FROM node:20 AS runner
+FROM hub.hamdocker.ir/node:20 as runner
 WORKDIR /app
 ENV NODE_ENV=production
 
