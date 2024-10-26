@@ -6,7 +6,7 @@ export async function POST(request) {
   const response = NextResponse.json({ success: true });
 
   response.cookies.set("access_token", access, {
-    httpOnly: true,
+    httpOnly: false,
     secure: true,
     maxAge: 60 * 60,
     path: "/",
@@ -14,7 +14,7 @@ export async function POST(request) {
   });
 
   response.cookies.set("refresh_token", refresh, {
-    httpOnly: true,
+    httpOnly: false,
     secure: true,
     maxAge: 60 * 60 * 24 * 7,
     path: "/",
