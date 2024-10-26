@@ -42,8 +42,13 @@ export const updateUserProfile = async (data, accessToken) => {
 
     if (!response.ok) {
       const errorData = await response.json();
+      console.log("Error Data:", errorData); // چاپ کامل داده‌های خطا
+
+      // بررسی و نمایش پیام خطا از سرور در صورت وجود کلید 'error'
       throw new Error(
-        errorData.detail || "خطا در بروزرسانی، لطفا دوباره امتحان کنید."
+        errorData.error ||
+          errorData.detail ||
+          "خطا در بروزرسانی، لطفا دوباره امتحان کنید."
       );
     }
 
