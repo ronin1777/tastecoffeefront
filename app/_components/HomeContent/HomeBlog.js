@@ -19,6 +19,7 @@ export default function HomeBlog() {
       try {
         const res = await fetch(`${apiUrl}/api/blog/blog/`, {
           method: "GET",
+          cache: "no-store",
           headers: {
             "Content-Type": "application/json",
           },

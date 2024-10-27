@@ -10,7 +10,7 @@ export const metadata = {
 export default async function BlogPage() {
   const res = await fetch(`${apiUrl}/api/blog/blog/`, {
     method: "GET",
-    next: { revalidate: 1 },
+    cache: "no-store",
     headers: {
       "Content-Type": "application/json",
     },
@@ -55,6 +55,8 @@ export default async function BlogPage() {
                           src={blog.images[0].image} // دسترسی به مسیر تصویر
                           width="200"
                           height="200"
+                          placeholder="blur"
+                          blurDataURL="/images/coffee/1.webp"
                           alt={blog.title}
                           quality={100}
                           className="aspect-[16/10] min-h-[72px] xs:min-h-20 min-w-27 w-27 xs:min-w-28 xs:w-28 sm:w-auto rounded-lg sm:rounded-xl group-hover:opacity-40 transition-opacity"

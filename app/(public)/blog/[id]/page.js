@@ -8,7 +8,7 @@ const BlogPostDetail = async ({ params }) => {
 
   const res = await fetch(`${apiUrl}/api/blog/blog/${id}/`, {
     method: "GET",
-    next: { revalidate: 1 },
+    cache: "no-store",
     headers: {
       "Content-Type": "application/json",
     },

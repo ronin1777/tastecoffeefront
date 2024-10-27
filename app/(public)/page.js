@@ -7,6 +7,7 @@ import ShippingSection from "@/app/_components/SendProducts";
 import HomeBlog from "@/app/_components/HomeContent/HomeBlog";
 import HomeBanner from "@/app/_components/HomeContent/HomeBanner";
 import { fetchProducts } from "@/services/product/fetchProducts";
+import HomePopularP from "../_components/HomeContent/HomePopularP";
 
 export default async function Home() {
   const { results: products } = await fetchProducts();
@@ -18,7 +19,7 @@ export default async function Home() {
       <HomeAbout />
       <HomeCategoryP />
       <ShippingSection />
-      {/* <HomePopularP products={products} /> */}
+      <HomePopularP products={products} />
       <HomeBlog />
     </>
   );

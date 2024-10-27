@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { formatPrice, formatWeight } from "@/app/utils/utils";
+import { blue } from "@mui/material/colors";
 
 export default function ShopItem({ product }) {
   const primaryImage = product?.images.find(
@@ -32,6 +33,8 @@ export default function ShopItem({ product }) {
             <Image
               src={primaryImage.image}
               fill
+              placeholder="blur"
+              blurDataURL="/images/coffee/1.webp"
               alt="Product Image Primary"
               className="rounded-lg transition-transform duration-300 transform group-hover:scale-105"
             />

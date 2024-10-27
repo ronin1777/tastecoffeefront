@@ -3,6 +3,14 @@ import ListShop from "@/app/_components/ListShop";
 import ProductFilters from "@/app/_components/product/FilterBar";
 import PaginationComponent from "@/app/_components/product/PaginationComponent";
 import apiUrl from "@/services/config";
+import Image from "next/image";
+import imag from "@/public/images/coffee/shop1.jpeg";
+const style = {
+  width: "100%",
+  height: "50%",
+  objectFit: "cover", // اطمینان حاصل می‌کند که تصویر به‌طور متناسب در عرض کل صفحه بدون کشیدگی قرار گیرد
+  objectPosition: "center", // برای تمرکز تصویر در وسط
+};
 
 export const metadata = {
   title: "Shop",
@@ -34,16 +42,23 @@ export default async function ShopPage({ searchParams }) {
   console.log(searchParams);
 
   return (
-    <>
-      <section className="shop-header mt-7 md:mt-0 h-60 xs:h-80 md:h-screen bg-shop-header bg-no-repeat bg-cover bg-[center_top] xs:bg-[left_top]">
-        <div className="container flex items-center h-full">
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl select-none text-white">
+    <div className="flex flex-col gap-11">
+      <section className="shop-header  mt-7 md:mt-0 h-60 xs:h-80 md:h-screen  bg-no-repeat bg-cover bg-[center_top] xs:bg-[left_top]">
+        <div className=" flex items-center h-full">
+          <Image
+            src={imag}
+            alt="banner image"
+            style={style}
+            layout="responsive"
+          />
+
+          {/* <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl select-none text-white">
             فروشگاه محصولات
-          </h1>
+          </h1> */}
         </div>
       </section>
 
-      <section className="shop my-12 md:my-20">
+      <section className="shop my-20 md:my-20">
         <div className="container max-w-custom mx-auto">
           <div className="section-header flex justify-between items-center text-zinc-700 dark:text-white mb-5 md:mb-12">
             <h2 className="text-xl xs:text-2xl md:text-5xl">همه محصولات</h2>
@@ -69,6 +84,6 @@ export default async function ShopPage({ searchParams }) {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
