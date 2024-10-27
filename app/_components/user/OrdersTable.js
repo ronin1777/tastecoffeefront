@@ -15,7 +15,9 @@ import {
 import { styled } from "@mui/material/styles";
 
 import formatCommentDate, {
+  convertCoffeeType,
   formatPrice,
+  formatWeight,
   getStatusInPersian,
 } from "@/app/utils/utils";
 import { CgDetailsMore } from "react-icons/cg";
@@ -24,6 +26,7 @@ import { CiEdit } from "react-icons/ci";
 import Link from "next/link";
 import { MdOutlineEditOff } from "react-icons/md";
 import apiUrl from "@/services/config";
+import { HiOutlineX } from "react-icons/hi";
 
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
   maxWidth: "100%",
@@ -58,12 +61,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const StyledImageCell = styled(StyledTableCell)({
   display: "flex",
-  justifyContent: "center", // مرکز چین کردن تصویر
-  alignItems: "center", // مرکز چین کردن عمودی تصویر
+  justifyContent: "center",
+  alignItems: "center",
 });
 
 export default function OrdersTable({ orders, accessToken }) {
-  console.log(JSON.stringify(orders?.ref_id));
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [openModal, setOpenModal] = useState(false);
 
@@ -108,20 +110,20 @@ export default function OrdersTable({ orders, accessToken }) {
           {orders?.map((order) => (
             <TableRow key={order.id}>
               <StyledTableCell>
-                {formatCommentDate(order.created_at)}
+                {formatCommentDate(order?.created_at)}
               </StyledTableCell>
               <StyledTableCell>
-                {getStatusInPersian(order.status)}
+                {getStatusInPersian(order?.status)}
               </StyledTableCell>
               <StyledTableCell>{order?.ref_id || "-"}</StyledTableCell>
               <StyledTableCell>
                 {order.shipping_method_name || "نامشخص"}
               </StyledTableCell>
               <StyledTableCell>
-                {formatPrice(order.total_price)}
+                {formatPrice(order?.total_price)}
               </StyledTableCell>
               <StyledTableCell>
-                {formatPrice(order.final_price)}
+                {formatPrice(order?.final_price)}
               </StyledTableCell>
               <StyledTableCell>
                 {" "}
@@ -153,8 +155,15 @@ export default function OrdersTable({ orders, accessToken }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backdrop: "rgba(0, 0, 0, 0.5)",
           textAlign: "center",
+        }}
+        slotProps={{
+          backdrop: {
+            style: {
+              backgroundColor: "rgba(0, 0, 0, 0.8)", // رنگ تیره‌تر برای بک‌دراپ
+              backdropFilter: "blur(8px)", // افکت بلور
+            },
+          },
         }}
       >
         <div
@@ -164,8 +173,6 @@ export default function OrdersTable({ orders, accessToken }) {
             padding: "20px",
             position: "relative",
             borderRadius: "10px",
-            height: "100%",
-            maxHeight: "90vh",
             overflowY: "auto",
             textAlign: "center",
           }}
@@ -182,7 +189,8 @@ export default function OrdersTable({ orders, accessToken }) {
                   <TableHead>
                     <TableRow>
                       <StyledTableCell>محصول</StyledTableCell>
-                      <StyledTableCell>عکس</StyledTableCell>
+                      <StyledTableCell>وزن</StyledTableCell>
+                      <StyledTableCell>نوع</StyledTableCell>
                       <StyledTableCell>قیمت</StyledTableCell>
                       <StyledTableCell>تعداد</StyledTableCell>
                     </TableRow>
@@ -190,18 +198,18 @@ export default function OrdersTable({ orders, accessToken }) {
                   <TableBody>
                     {selectedOrder.items?.length > 0 ? (
                       selectedOrder.items.map((item) => (
-                        <TableRow key={item.id}>
-                          <StyledTableCell>{item.product_name}</StyledTableCell>
-                          <StyledImageCell>
-                            <Image
-                              src={`${apiUrl}${item.primary_image}`}
-                              height={50}
-                              width={50}
-                              alt={item.product_name}
-                            />
-                          </StyledImageCell>
+                        <TableRow key={item?.id}>
                           <StyledTableCell>
-                            {formatPrice(item.price)}
+                            {item?.product_name}
+                          </StyledTableCell>
+                          <StyledTableCell>
+                            {formatWeight(item?.weight)}
+                          </StyledTableCell>
+                          <StyledTableCell>
+                            {convertCoffeeType(item?.coffee_type)} قهوه
+                          </StyledTableCell>
+                          <StyledTableCell>
+                            {formatPrice(item?.price)}
                           </StyledTableCell>
                           <StyledTableCell>{item.quantity}</StyledTableCell>
                         </TableRow>
@@ -220,15 +228,23 @@ export default function OrdersTable({ orders, accessToken }) {
                 </StyledTable>
                 <Button
                   onClick={handleCloseModal}
-                  variant="contained"
-                  color="primary"
                   style={{
                     position: "absolute",
                     right: "20px",
-                    top: "20px", // موقعیت دکمه بستن
+                    top: "20px",
+                    minWidth: "40px",
+                    minHeight: "40px",
+                    padding: "0",
+                    borderRadius: "50%",
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    color: "white",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
                   }}
                 >
-                  بستن
+                  <HiOutlineX size={24} />
                 </Button>
               </StyledTableContainer>
             </div>

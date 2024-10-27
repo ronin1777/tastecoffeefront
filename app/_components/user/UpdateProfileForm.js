@@ -182,7 +182,7 @@ export default function UpdateProfileForm({ user, accessToken }) {
               >
                 تاریخ تولد
               </label>
-              <div className="mt-1 relative w-full p-3 border dark:bg-black rounded-md focus:outline-none">
+              <div className="mt-1 dark:text-white relative w-full p-3 border dark:bg-black rounded-md focus:outline-none">
                 <DatePicker
                   calendar={persian}
                   locale={persian_fa}

@@ -124,10 +124,7 @@ export default function MobileProfileSideN() {
         </div>
         {/* Nav footer */}
         <div className="flex flex-col gap-y-6 items-start py-8 px-2.5 text-orange-300 mt-8 border-t border-t-gray-100 dark:border-t-white/10">
-          <Link
-            href="/frontend/tastecoffee/public"
-            className="inline-flex items-center gap-x-2"
-          >
+          <Link href="/" className="inline-flex items-center gap-x-2">
             <IoHomeOutline className="w-5 h-5" />
             صفحه اصلی
           </Link>

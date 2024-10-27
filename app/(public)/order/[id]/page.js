@@ -132,7 +132,9 @@ export default function OrderDetailPage({ params }) {
                 </StyledTableCell>
                 <StyledTableCell>{formatWeight(item.weight)}</StyledTableCell>
                 <StyledTableCell>{item.quantity}</StyledTableCell>
-                <StyledTableCell>{formatPrice(item.price)}</StyledTableCell>
+                <StyledTableCell>
+                  {formatPrice(item.price * item.quantity)}
+                </StyledTableCell>
               </TableRow>
             ))}
           </TableBody>
