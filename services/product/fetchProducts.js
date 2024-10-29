@@ -1,7 +1,6 @@
 import apiUrl from "@/services/config";
 
 export const fetchProducts = async () => {
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
   const res = await fetch(`${apiUrl}/api/product/products/`, {
     method: "GET",
     cache: "no-store",
