@@ -116,8 +116,9 @@ export default function CompleteRegistrationModal({ handleCloseModal }) {
         email: data.email,
       });
 
-      const response = await fetch("api/auth/set-cookies", {
+      const response = await fetch("/api/auth/set-cookies", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
