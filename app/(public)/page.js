@@ -10,16 +10,16 @@ import { fetchProducts } from "@/services/product/fetchProducts";
 import HomePopularP from "../_components/HomeContent/HomePopularP";
 
 export default async function Home() {
-  // const { results: products } = await fetchProducts();
+  const { results: products } = await fetchProducts();
   return (
     <>
       <HomeBanner />
-      {/* <HomeProductS products={products} /> */}
+      <HomeProductS products={products} />
       <CategoryBanner />
       <HomeAbout />
       <HomeCategoryP />
       <ShippingSection />
-      {/* <HomePopularP products={products} /> */}
+      <HomePopularP products={products} />
       <HomeBlog />
     </>
   );
