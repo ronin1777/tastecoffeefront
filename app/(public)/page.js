@@ -19,7 +19,7 @@ export default async function Home() {
       <HomeAbout />
       <HomeCategoryP />
       <ShippingSection />
-      <HomePopularP products={products} />
+      {/* <HomePopularP products={products} /> */}
       <HomeBlog />
     </>
   );
