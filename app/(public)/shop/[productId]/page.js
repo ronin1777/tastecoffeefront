@@ -143,10 +143,6 @@ export default async function ProductPage({ params }) {
               </ul>
 
               {/* Add to Cart Section */}
-              <p className="text-yellow-200">
-                در صورت بروز نشدن سبد خرید لطفا در مرورگر گزینه clear browsing
-                data را بزنید.
-              </p>
               <ProductAddToCart
                 productId={productId}
                 basePrice={price}

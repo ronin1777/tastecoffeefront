@@ -4,6 +4,16 @@ import { useState } from "react";
 import cookie from "cookie";
 import { useRouter } from "next/navigation";
 import apiUrl from "@/services/config";
+import {
+  toast,
+  ToastContainer,
+  Slide,
+  Zoom,
+  Flip,
+  Bounce,
+} from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const AddToCart = ({ productId, available }) => {
   const [quantity, setQuantity] = useState(1);
@@ -55,8 +65,14 @@ const AddToCart = ({ productId, available }) => {
       }
 
       // Set a success message
-      setSuccessMessage("محصول با موفقیت اضافه شد");
-      location.reload();
+      toast.success("محصول با موفقیت اضافه شد!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+      });
+      router.refresh();
+      // location.reload();
     } catch (error) {
       setErrorMessage(error.message);
     } finally {
@@ -101,6 +117,19 @@ const AddToCart = ({ productId, available }) => {
             disabled={loading}
           >
             {loading ? "در حال اضافه کردن..." : "افزودن به سبد خرید"}
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+              transition={Slide}
+            />
           </button>
         </div>
       ) : (

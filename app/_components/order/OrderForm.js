@@ -5,6 +5,16 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { formatPrice } from "@/app/utils/utils";
 import apiUrl from "@/services/config";
+import {
+  toast,
+  ToastContainer,
+  Slide,
+  Zoom,
+  Flip,
+  Bounce,
+} from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 export default function OrderForm({ accessToken }) {
   const {
@@ -31,8 +41,12 @@ export default function OrderForm({ accessToken }) {
 
       if (response.ok) {
         const orderData = await response.json();
-        console.log(`data: `, orderData);
-        console.log(`id: ${orderData.id}`);
+        toast.success("سفارش شما با موفقیت ثبت شد", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
         router.push(`/order/${orderData.id}`);
       } else {
         const errorData = await response.json();
@@ -148,6 +162,19 @@ export default function OrderForm({ accessToken }) {
         className="w-full bg-green-500 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300 ease-in-out transform hover:scale-105"
       >
         ثبت سفارش
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Slide}
+        />
       </button>
     </form>
   );
