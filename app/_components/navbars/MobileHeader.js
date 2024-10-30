@@ -174,7 +174,7 @@ export default function MobileHeader({
           />
           <span className="text-zinc-700 dark:text-white">سبد خرید</span>
         </div>
-        {cartItems.length === 0 ? (
+        {cartItems?.length === 0 ? (
           <div className="cart-container">
             <div className="flex flex-col items-center justify-center gap-y-3">
               <Image
@@ -192,7 +192,7 @@ export default function MobileHeader({
         ) : (
           <div>
             {/* Cart content */}
-            {cartItems.map((item) => (
+            {cartItems?.map((item) => (
               <ItemCart
                 key={item.id}
                 item={item}

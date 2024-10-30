@@ -4,7 +4,7 @@ import ProductFilters from "@/app/_components/product/FilterBar";
 import PaginationComponent from "@/app/_components/product/PaginationComponent";
 import apiUrl from "@/services/config";
 import Image from "next/image";
-import imag from "@/public/images/coffee/shop1.jpeg";
+import imag from "@/public/images/coffee/shop1.jpg";
 const style = {
   width: "100%",
   height: "50%",
@@ -13,8 +13,19 @@ const style = {
 };
 
 export const metadata = {
-  title: "Shop",
-  description: "shop of tastecoffee",
+  title: {
+    template: "%s | تیست کافی",
+    default: "فروشگاه",
+  },
+  description:
+    "فروشگاه تیست کافی، جایی برای خرید قهوه‌های تخصصی با کیفیت عالی.",
+  openGraph: {
+    title: "فروشگاه | تیست کافی",
+    description:
+      "به فروشگاه تیست کافی خوش آمدید. قهوه‌های تخصصی و با کیفیت را با بهترین قیمت پیدا کنید.",
+    images: ["/images/coffee/shop1.jpg"], // مسیر تصویر مخصوص صفحه فروشگاه
+  },
+  metadataBase: new URL(`${apiUrl}`),
 };
 
 export default async function ShopPage({ searchParams }) {

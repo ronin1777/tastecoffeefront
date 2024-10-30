@@ -3,6 +3,45 @@ import formatCommentDate from "@/app/utils/utils";
 import Image from "next/image";
 import apiUrl from "@/services/config";
 
+export async function generateMetadata({ params, searchParams }, parent) {
+  const { id } = params;
+
+  // دریافت اطلاعات پست بلاگ با استفاده از API
+  const res = await fetch(`${apiUrl}/api/blog/blog/${id}/`, {
+    method: "GET",
+    cache: "no-store",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch blog post");
+  }
+
+  const blogPost = await res.json();
+
+  // ترکیب تصاویر از والد با تصویر پست بلاگ
+  const previousImages = (await parent).openGraph?.images || [];
+
+  // استخراج محتوای اولین پاراگراف به عنوان توصیف
+  const description =
+    blogPost.paragraphs.length > 0
+      ? blogPost.paragraphs[0].content
+      : "محتوایی برای نمایش وجود ندارد.";
+
+  return {
+    title: blogPost.title,
+    description: description,
+    openGraph: {
+      title: blogPost.title,
+      description: description,
+      images: [blogPost.images[0]?.image, ...previousImages],
+    },
+    metadataBase: new URL(`${apiUrl}`),
+  };
+}
+
 const BlogPostDetail = async ({ params }) => {
   const { id } = params;
 

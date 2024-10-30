@@ -153,18 +153,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/location" className=" hover:text-white">
-                  مکان و تماس
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className=" hover:text-white">
-                  خدمات
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className=" hover:text-white">
-                  سوالات متداول
+                <Link href="/rules" className=" hover:text-white">
+                  قوانین و مقررات
                 </Link>
               </li>
             </ul>

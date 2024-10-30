@@ -2,9 +2,21 @@ import Link from "next/link";
 import Image from "next/image";
 import formatCommentDate from "@/app/utils/utils";
 import apiUrl from "@/services/config";
+
 export const metadata = {
-  title: "Blog",
-  description: "blogs of coffee",
+  title: {
+    template: "%s | تیست کافی",
+    default: "بلاگ",
+  },
+  description:
+    "بلاگ تیست کافی، جایی برای کشف اطلاعات و اخبار مرتبط با قهوه و دنیای آن.",
+  openGraph: {
+    title: "بلاگ | تیست کافی",
+    description:
+      "آخرین مقالات و اخبار مربوط به قهوه را در بلاگ تیست کافی بخوانید.",
+    images: ["/images/coffee/blog_cover.jpg"], // مسیر تصویر مخصوص صفحه بلاگ
+  },
+  metadataBase: new URL(`${apiUrl}`),
 };
 
 export default async function BlogPage() {

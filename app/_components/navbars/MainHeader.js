@@ -35,6 +35,7 @@ export default async function MainHeader() {
     // اگر توکنی وجود نداشت
     console.log("No access token available");
   }
+
   return (
     <div>
       <DesktopHeader user={user} />

@@ -7,6 +7,43 @@ import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import Image from "next/image";
 import apiUrl from "@/services/config";
 
+export async function generateMetadata({ params }) {
+  const { productId } = params;
+  console.log(`prodoct: ${productId}`);
+
+  // Fetch the product data
+  const res = await fetch(`${apiUrl}/api/product/products/${productId}/`, {
+    next: { revalidate: 1 },
+  });
+
+  if (!res.ok) {
+    throw new Error("خطایی در بارگذاری اطلاعات محصول وجود دارد.");
+  }
+
+  const product = await res.json();
+  const primaryImage = product.images.find(
+    (image) => image.image_type === "primary"
+  );
+  const getShortDescription = (description, sentenceCount = 20) => {
+    const sentences = description.split("."); // برش به جملات
+    return (
+      sentences.slice(0, sentenceCount).join(".") +
+      (sentences.length > sentenceCount ? "..." : "")
+    );
+  };
+
+  return {
+    title: `${product?.name}`,
+    description: `${product?.description}`,
+    openGraph: {
+      title: product.title,
+      description: product?.description,
+      images: [primaryImage?.image || "/images/coffee/default_product.jpg"], // تصویر اصلی محصول
+    },
+    metadataBase: new URL(`${apiUrl}`),
+  };
+}
+
 export default async function ProductPage({ params }) {
   const { productId } = params;
 
@@ -15,7 +52,7 @@ export default async function ProductPage({ params }) {
 
   try {
     const res = await fetch(`${apiUrl}/api/product/products/${productId}/`, {
-      next: { revalidate: 10 },
+      next: { revalidate: 1 },
     });
 
     if (!res.ok) {

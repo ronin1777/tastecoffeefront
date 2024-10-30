@@ -24,32 +24,37 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+// export const metadata = {
+//   title: {
+//     template: "%s | TasteCoffee",
+//     default: "Welcome | TasteCoffee",
+//   },
+//   description: "Selling specialty coffees with the best quality",
+// };
 export const metadata = {
   title: {
-    template: "%s | TasteCoffee",
-    default: "Welcome | TasteCoffee",
+    template: "%s | تیست کافی",
+    default: "خوش آمدید | تیست کافی",
   },
-  description: "Selling specialty coffees with the best quality",
+  description: "فروش قهوه‌های تخصصی با بهترین کیفیت",
+  keywords: [
+    "اسپرسو",
+    "قهوه‌ساز",
+    "قهوه",
+    "قهوه‌های تخصصی",
+    "روبوستا",
+    "عربیکا",
+  ],
+  openGraph: {
+    title: "تیست کافی",
+    description: "فروش قهوه‌های تخصصی با بهترین کیفیت در تیست کافی.",
+    images: ["/images/coffee/shop1.jpg"],
+  },
+
+  metadataBase: new URL("http://localhost:3000"),
 };
 
 export default async function RootLayout({ children }) {
-  const cookieStore = cookies();
-  const accessToken = cookieStore.get("access_token")?.value;
-
-  let user;
-  let error;
-
-  if (accessToken) {
-    try {
-      user = await fetchUserData(accessToken);
-    } catch (err) {
-      error = err.message;
-      console.error("Error fetching user data1:", error);
-    }
-  } else {
-    console.log("User is not logged in, no access token found.");
-  }
-
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
       <body className={`bg-gray-100 dark:bg-zinc-800 ${Vazir.className}`}>
