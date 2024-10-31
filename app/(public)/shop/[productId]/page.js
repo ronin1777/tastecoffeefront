@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
       description: product?.description,
       images: [primaryImage?.image || "/images/coffee/default_product.jpg"], // تصویر اصلی محصول
     },
-    metadataBase: new URL(`${apiUrl}`),
+    metadataBase: new URL(apiUrl || "http://localhost"),
   };
 }
 

@@ -16,7 +16,7 @@ export const metadata = {
       "آخرین مقالات و اخبار مربوط به قهوه را در بلاگ تیست کافی بخوانید.",
     images: ["/images/coffee/blog_cover.jpg"], // مسیر تصویر مخصوص صفحه بلاگ
   },
-  metadataBase: new URL(`${apiUrl}`),
+  metadataBase: new URL(apiUrl || "http://localhost"),
 };
 
 export default async function BlogPage() {

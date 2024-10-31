@@ -38,7 +38,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
       description: description,
       images: [blogPost.images[0]?.image, ...previousImages],
     },
-    metadataBase: new URL(`${apiUrl}`),
+    metadataBase: new URL(apiUrl || "http://localhost"),
   };
 }
 

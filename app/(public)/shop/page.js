@@ -25,7 +25,7 @@ export const metadata = {
       "به فروشگاه تیست کافی خوش آمدید. قهوه‌های تخصصی و با کیفیت را با بهترین قیمت پیدا کنید.",
     images: ["/images/coffee/shop1.jpg"], // مسیر تصویر مخصوص صفحه فروشگاه
   },
-  metadataBase: new URL(`${apiUrl}`),
+  metadataBase: new URL(apiUrl || "http://localhost"),
 };
 
 export default async function ShopPage({ searchParams }) {

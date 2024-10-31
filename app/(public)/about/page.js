@@ -13,7 +13,7 @@ export const metadata = {
     images: ["/images/coffee/about_us.jpg"],
     // TODO
   },
-  metadataBase: new URL(`${apiUrl}`),
+  metadataBase: new URL(apiUrl || "http://localhost"),
 };
 export default function AboutPage() {
   return (

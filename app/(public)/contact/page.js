@@ -13,7 +13,7 @@ export const metadata = {
     description: "با ما تماس بگیرید تا به سوالات و نیازهای شما پاسخ دهیم.",
     images: ["/images/coffee/contact_us.jpg"], // مسیر تصویر مخصوص صفحه تماس با ما
   },
-  metadataBase: new URL(`${apiUrl}`),
+  metadataBase: new URL(apiUrl || "http://localhost"),
 };
 
 export default function ContactPage() {
