@@ -15,6 +15,7 @@ import { LuPhoneForwarded } from "react-icons/lu";
 import LoginButton from "@/app/_components/Modals/LoginButton";
 
 import ItemCart from "@/app/_components/navbars/ItemListCart";
+import { usePathname } from "next/navigation";
 
 export default function MobileHeader({
   user,
@@ -26,6 +27,7 @@ export default function MobileHeader({
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -108,7 +110,11 @@ export default function MobileHeader({
         </div>
         <div>
           {/* Nav menu */}
-          <div className="flex  items-center mb-4 rounded-md bg-orange-200/20 text-orange-300 pr-2.5 h-10">
+          <div
+            className={`flex  items-center mb-4 rounded-md  text-orange-300 pr-2.5 h-10 ${
+              pathname === "/" ? "bg-orange-200/20" : ""
+            }`}
+          >
             <Link
               href="/"
               className="flex items-center gap-x-2"
@@ -118,13 +124,15 @@ export default function MobileHeader({
               صفحه اصلی
             </Link>
           </div>
-          <ul className="child:pr-2.5 space-y-6 dark:text-white text-zinc-600">
+          <ul className="child:pr-2.5 space-y-6 child:rounded-md child:h-10 dark:text-white text-zinc-600">
             {/* Sub menu */}
 
             <li>
               <Link
                 href="/blog"
-                className="flex items-center gap-x-2"
+                className={`flex items-center gap-x-2 rounded-md h-10 pr-2 ${
+                  pathname === "/blog" ? "bg-orange-200/20" : ""
+                }`}
                 onClick={closeAll}
               >
                 <IoBriefcaseOutline className="w-5 h-5" />
@@ -134,7 +142,9 @@ export default function MobileHeader({
             <li>
               <Link
                 href="/about"
-                className="flex items-center gap-x-2"
+                className={`flex items-center gap-x-2 rounded-md h-10 pr-2 ${
+                  pathname === "/about" ? "bg-orange-200/20" : ""
+                }`}
                 onClick={closeAll}
               >
                 <IoDocumentTextOutline className="w-5 h-5" />
@@ -144,7 +154,9 @@ export default function MobileHeader({
             <li>
               <Link
                 href="/contact"
-                className="flex items-center gap-x-2"
+                className={`flex items-center gap-x-2 rounded-md h-10 pr-2 ${
+                  pathname === "/contact" ? "bg-orange-200/20" : ""
+                }`}
                 onClick={closeAll}
               >
                 <LuPhoneForwarded className="w-5 h-5" />

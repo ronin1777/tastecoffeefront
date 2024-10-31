@@ -8,18 +8,22 @@ import HomeBlog from "@/app/_components/HomeContent/HomeBlog";
 import HomeBanner from "@/app/_components/HomeContent/HomeBanner";
 import { fetchProducts } from "@/services/product/fetchProducts";
 import HomePopularP from "../_components/HomeContent/HomePopularP";
+import { Suspense } from "react";
+import Spinner from "../_components/Spinner";
+import SearchProducts from "./SearchProducts";
 
 export default async function Home() {
-  const { results: products } = await fetchProducts();
   return (
     <>
       <HomeBanner />
-      <HomeProductS products={products} />
+      {/* <SearchProducts /> */}
+      <HomeProductS />
+
       <CategoryBanner />
       <HomeAbout />
       <HomeCategoryP />
       <ShippingSection />
-      <HomePopularP products={products} />
+      <HomePopularP />
       <HomeBlog />
     </>
   );

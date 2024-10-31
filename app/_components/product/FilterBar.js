@@ -25,7 +25,7 @@ const ProductFilters = ({ searchParams }) => {
       }
     }
 
-    router.push(`/shop?${newSearchParams.toString()}`, { scroll: false });
+    router.replace(`/shop?${newSearchParams.toString()}`, { scroll: false });
   }, [filters]);
 
   const handleFilterChange = (e) => {

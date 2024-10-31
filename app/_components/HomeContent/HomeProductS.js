@@ -27,8 +27,9 @@ import { fetchProducts } from "@/services/product/fetchProducts";
 import { Suspense } from "react";
 import HomeProductList from "./HomeProductList";
 import NewProductsLoading from "@/app/_components/Loadings/NewProducts";
+import Spinner from "../Spinner";
 
-export default function HomeProductS({ products }) {
+export default async function HomeProductS() {
   return (
     <section className="products-section pt-8 md:pt-20 lg:pt-36 bg-no-repeat">
       <div className="container mt-5">
@@ -50,8 +51,8 @@ export default function HomeProductS({ products }) {
           </a>
         </div>
 
-        <Suspense fallback={<NewProductsLoading />}>
-          <HomeProductList products={products} />
+        <Suspense fallback={<Spinner />}>
+          <HomeProductList />
         </Suspense>
       </div>
     </section>

@@ -9,8 +9,9 @@ module.exports = {
   generateRobotsTxt: true, // تولید فایل robots.txt
   exclude: ["/protected-page", "/awesome/secret-page"], // صفحاتی که نمی‌خواهید در نقشه باشند
   additionalPaths: async (config) => [
-    await config.transform(config, "/"), // صفحه اصلی
-    await config.transform(config, "/peyment"), // صفحه تماس با ما
-    await config.transform(config, "/blog"), // صفحه قوانین و مقررات
+    await config.transform(config, "/"),
+    await config.transform(config, "/shop"),
+    await config.transform(config, "/contact"),
+    await config.transform(config, "/blog"),
   ],
 };

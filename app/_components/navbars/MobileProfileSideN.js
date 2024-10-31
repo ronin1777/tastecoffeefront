@@ -23,11 +23,12 @@ import { MdOutlineDashboard } from "react-icons/md";
 import { logout } from "@/app/utils/logout";
 import LogoutLink from "@/app/_components/Modals/LogoutLink";
 import LogoutProfile from "@/app/_components/user/LogoutProfile";
+import { usePathname } from "next/navigation";
 
 export default function MobileProfileSideN() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-
+  const pathname = usePathname();
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     // Close cart if open when menu is toggled
@@ -88,10 +89,14 @@ export default function MobileProfileSideN() {
         </div>
         <div>
           {/* Nav menu */}
-          <div className="flex  items-center mb-4 rounded-md bg-orange-200/20 text-orange-300 pr-2.5 h-10">
+          <div
+            className={`flex  items-center mb-4 rounded-md  text-orange-300 pr-2.5 h-10 ${
+              pathname === "/account/profile" ? "bg-orange-200/20" : ""
+            }`}
+          >
             <Link
               href="/account/profile"
-              className="flex items-center gap-x-2"
+              className={`flex items-center gap-x-2 rounded-md h-10 pr-2`}
               onClick={closeAll}
             >
               <MdOutlineDashboard className="w-5 h-5" />
@@ -103,7 +108,11 @@ export default function MobileProfileSideN() {
             <li>
               <Link
                 href="/account/profile/orders"
-                className="flex items-center gap-x-2"
+                className={`flex items-center gap-x-2 rounded-md h-10 pr-2 ${
+                  pathname === "/account/profile/orders"
+                    ? "bg-orange-200/20"
+                    : ""
+                }`}
                 onClick={closeAll}
               >
                 <CiShoppingBasket className="w-5 h-5" />
@@ -113,7 +122,11 @@ export default function MobileProfileSideN() {
             <li>
               <Link
                 href="/account/profile/details"
-                className="flex items-center gap-x-2"
+                className={`flex items-center gap-x-2 rounded-md h-10 pr-2 ${
+                  pathname === "/account/profile/details"
+                    ? "bg-orange-200/20"
+                    : ""
+                }`}
                 onClick={closeAll}
               >
                 <CiSettings className="w-5 h-5" />

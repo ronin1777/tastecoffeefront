@@ -17,20 +17,22 @@ export async function generateMetadata({ params }) {
   });
 
   if (!res.ok) {
-    throw new Error("خطایی در بارگذاری اطلاعات محصول وجود دارد.");
+    console.error("خطایی در بارگذاری اطلاعات محصول وجود دارد.");
+    return {
+      title: "محصول یافت نشد",
+      description: "محصول مورد نظر موجود نیست.",
+      openGraph: {
+        title: "محصول یافت نشد",
+        description: "محصول مورد نظر موجود نیست.",
+      },
+      metadataBase: new URL(`${apiUrl}`),
+    };
   }
 
   const product = await res.json();
   const primaryImage = product.images.find(
     (image) => image.image_type === "primary"
   );
-  const getShortDescription = (description, sentenceCount = 20) => {
-    const sentences = description.split("."); // برش به جملات
-    return (
-      sentences.slice(0, sentenceCount).join(".") +
-      (sentences.length > sentenceCount ? "..." : "")
-    );
-  };
 
   return {
     title: `${product?.name}`,
