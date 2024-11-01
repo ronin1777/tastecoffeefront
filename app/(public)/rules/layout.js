@@ -14,7 +14,7 @@ export const metadata = {
       "در این صفحه به بررسی قوانین و مقررات استفاده از خدمات ما بپردازید.",
     images: ["/images/coffee/terms_conditions.jpg"],
   },
-  metadataBase: new URL(apiUrl || "http://localhost"),
+  // metadataBase: new URL(apiUrl || "http://localhost"),
 };
 
 const RulesLayout = ({ children }) => {
