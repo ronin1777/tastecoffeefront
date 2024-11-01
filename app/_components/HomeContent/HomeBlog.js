@@ -1,53 +1,34 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import formatCommentDate from "@/app/utils/utils";
 import apiUrl from "@/services/config";
 
-export default function HomeBlog() {
-  const [blogs, setBlogs] = useState([]);
+export default async function HomeBlog() {
+  let blogs = [];
 
-  useEffect(() => {
-    AOS.init();
+  // Fetch the latest blog posts directly in the server component
+  try {
+    const res = await fetch(`${apiUrl}/api/blog/blog/`, {
+      method: "GET",
+      cache: "no-store",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-    // Fetch the latest blog posts
-    const fetchBlogs = async () => {
-      try {
-        const res = await fetch(`${apiUrl}/api/blog/blog/`, {
-          method: "GET",
-          cache: "no-store",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-
-        if (res.ok) {
-          const data = await res.json();
-          // Only take the three most recent blog posts
-          setBlogs(data.results.slice(0, 3));
-        } else {
-          console.error("Error fetching blog data1:", error);
-        }
-      } catch (error) {
-        console.error("Error fetching blog data:", error);
-      }
-    };
-
-    fetchBlogs();
-  }, []);
+    if (res.ok) {
+      const data = await res.json();
+      blogs = data.results.slice(0, 3); // Only take the three most recent blog posts
+    } else {
+      console.error("Error fetching blog data:", res.statusText);
+    }
+  } catch (error) {
+    console.error("Error fetching blog data:", error);
+  }
 
   return (
     <div className="overflow-hidden">
-      <section
-        data-aos="zoom-in"
-        data-aos-duration="1500"
-        data-aos-easing="ease-out-back"
-        className="blogs mb-12 md:mb-28"
-      >
+      <section className="blogs mb-12 md:mb-28">
         <div className="container">
           <div className="section-header flex justify-between items-center text-zinc-700 dark:text-white mb-5 md:mb-12">
             <div>

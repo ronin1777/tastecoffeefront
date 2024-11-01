@@ -16,7 +16,6 @@ export default function ShopItem({ product }) {
   const type = product?.coffee_type;
   const price = formatPrice(product?.base_price);
   const weight = formatWeight(product?.weight);
-  console.log(`primeryimage: ${primaryImage.image}`);
 
   return (
     <div

@@ -58,7 +58,7 @@ const BlogPostDetail = async ({ params }) => {
   }
 
   const blogPost = await res.json();
-  console.log(`blog image: ${blogPost.images[0].image}`);
+
   return (
     <div className="container my-40 mx-auto p-6">
       <h1 className="text-3xl font-bold text-zinc-700 dark:text-white text-center mb-4">
