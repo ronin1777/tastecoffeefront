@@ -1,4 +1,4 @@
-// const apiUrl = "https://tastecoffee.darkube.app";
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+const apiUrl = "https://guts17.pythonanywhere.com";
+// const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export default apiUrl;
